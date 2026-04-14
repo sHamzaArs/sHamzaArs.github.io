@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hamza — Engineering Student</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f9f8f6;
+      --surface: #ffffff;
+      --border: rgba(0,0,0,0.1);
+      --border-hover: rgba(0,0,0,0.2);
+      --text: #1a1a18;
+      --text-secondary: #6b6b67;
+      --accent: #1a1a18;
+      --tag-bg: #f0efe9;
+      --radius: 10px;
+      --radius-lg: 14px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111110;
+        --surface: #1c1c1a;
+        --border: rgba(255,255,255,0.1);
+        --border-hover: rgba(255,255,255,0.22);
+        --text: #e8e8e2;
+        --text-secondary: #888882;
+        --accent: #e8e8e2;
+        --tag-bg: #252523;
+      }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ── */
+    .wrapper {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.75rem 0 1.75rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+
+    .nav-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── Hero ── */
+    .hero {
+      margin-bottom: 4rem;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .hero-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-size: clamp(26px, 5vw, 36px);
+      font-weight: 500;
+      line-height: 1.25;
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin-bottom: 24px;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 8px 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.15s, background 0.15s;
+      display: inline-block;
+    }
+
+    .btn:hover { border-color: var(--border-hover); background: var(--surface); }
+
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+
+    .btn-primary:hover { opacity: 0.85; background: var(--text); }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    section:nth-of-type(1) { animation-delay: 0.1s; }
+    section:nth-of-type(2) { animation-delay: 0.2s; }
+    section:nth-of-type(3) { animation-delay: 0.3s; }
+
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── Projects ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+
+    .project-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .project-title {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .project-arrow {
+      font-size: 14px;
+      color: var(--text-secondary);
+      transition: transform 0.15s;
+    }
+
+    .project-card:hover .project-arrow { transform: translate(2px, -2px); }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 6px;
+      background: var(--tag-bg);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-pill {
+      font-size: 13px;
+      padding: 6px 14px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      background: var(--surface);
+    }
+
+    /* ── Contact ── */
+    .contact-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-link {
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 7px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .contact-link:hover {
+      border-color: var(--border-hover);
+      color: var(--text);
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 2rem 0;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    /* ── Animation ── */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 520px) {
+      .nav-links { gap: 1rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <nav>
+      <a class="nav-logo" href="#">sHamzaArs</a>
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero">
+      <p class="hero-label">Engineering Student &middot; [Your University]</p>
+      <h1>Hi, I'm Hamza —<br>I build things that work.</h1>
+      <p>
+        Second-year engineering student interested in [your interests, e.g. embedded systems, software, robotics].
+        Currently looking for internship opportunities.
+      </p>
+      <div class="hero-links">
+        <a class="btn btn-primary" href="resume.pdf" target="_blank">View Resume</a>
+        <a class="btn" href="https://github.com/sHamzaArs" target="_blank">GitHub</a>
+        <a class="btn" href="https://linkedin.com/in/YOUR-LINKEDIN" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <section id="projects">
+      <p class="section-label">Projects</p>
+      <div class="projects-grid">
+
+        <!-- Project 1 — edit or duplicate this block for each project -->
+        <a class="project-card" href="https://github.com/sHamzaArs/project-one" target="_blank">
+          <div class="project-header">
+            <span class="project-title">Project Name</span>
+            <span class="project-arrow">↗</span>
+          </div>
+          <p class="project-desc">
+            A short description of what this project does and what problem it solves. Keep it to 2–3 sentences.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Python</span>
+            <span class="tag">Arduino</span>
+            <span class="tag">Hardware</span>
+          </div>
+        </a>
+
+        <!-- Project 2 -->
+        <a class="project-card" href="https://github.com/sHamzaArs/project-two" target="_blank">
+          <div class="project-header">
+            <span class="project-title">Another Project</span>
+            <span class="project-arrow">↗</span>
+          </div>
+          <p class="project-desc">
+            Brief description of this project. What tech did you use? What was the outcome?
+          </p>
+          <div class="tag-row">
+            <span class="tag">C++</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </a>
+
+        <!-- This Website -->
+        <a class="project-card" href="https://github.com/sHamzaArs/sHamzaArs.github.io" target="_blank">
+          <div class="project-header">
+            <span class="project-title">This Website</span>
+            <span class="project-arrow">↗</span>
+          </div>
+          <p class="project-desc">
+            Personal portfolio site built with plain HTML, CSS, and JS. Hosted for free on GitHub Pages.
+          </p>
+          <div class="tag-row">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">GitHub Pages</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <p class="section-label">Skills</p>
+      <div class="skills-grid">
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">C / C++</span>
+        <span class="skill-pill">JavaScript</span>
+        <span class="skill-pill">HTML / CSS</span>
+        <span class="skill-pill">Git</span>
+        <span class="skill-pill">Arduino</span>
+        <span class="skill-pill">Linux</span>
+        <span class="skill-pill">MATLAB</span>
+        <!-- Add or remove skills as needed -->
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <p class="section-label">Contact</p>
+      <div class="contact-row">
+        <a class="contact-link" href="mailto:your@email.com">your@email.com</a>
+        <a class="contact-link" href="https://github.com/sHamzaArs" target="_blank">GitHub</a>
+        <a class="contact-link" href="https://linkedin.com/in/YOUR-LINKEDIN" target="_blank">LinkedIn</a>
+      </div>
+    </section>
+
+    <footer>
+      Built by Hamza &middot; <a href="https://github.com/sHamzaArs/sHamzaArs.github.io" style="color: inherit;">Source</a>
+    </footer>
+
+  </div>
+</body>
+</html>
