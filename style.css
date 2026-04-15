@@ -172,6 +172,22 @@ nav {
   background: var(--text);
 }
 
+.btn-icon {
+  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon img {
+  filter: invert(0);
+  transition: opacity 0.15s;
+}
+
+body.dark .btn-icon img {
+  filter: invert(1);
+}
+
 /* ── Sections ── */
 section {
   margin-bottom: 3.5rem;
