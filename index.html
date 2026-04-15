@@ -299,18 +299,20 @@ body.dark {
 <body>
   <div class="wrapper">
 
-    <nav>
-      <a class="nav-logo" href="#">sHamzaArs</a>
-      <ul class="nav-links">
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+<nav>
+  <a class="nav-logo" href="#">sHamzaArs</a>
+  <div style="display:flex; align-items:center; gap:1.5rem;">
+    <ul class="nav-links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      <span id="themeIcon">☾</span>
+    </button>
+  </div>
+</nav>
 
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-  <span id="themeIcon">☾</span>
-</button>
-    </nav>
 
     <!-- Hero -->
     <div class="hero">
