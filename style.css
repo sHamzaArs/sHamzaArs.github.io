@@ -277,6 +277,14 @@ section:nth-of-type(3) { animation-delay: 0.3s; }
   border: 1px solid var(--border);
 }
 
+.tag-python     { background: #1c3a5e; color: #7eb8f7; border-color: #2a5a8a; }
+.tag-javascript { background: #3d3200; color: #f0c429; border-color: #5a4a00; }
+.tag-html       { background: #3d1a00; color: #f07840; border-color: #5a2800; }
+.tag-css        { background: #1a1f4a; color: #7b8ff5; border-color: #2a3270; }
+.tag-cpp        { background: #1a2e3d; color: #5eb8d4; border-color: #2a4a5e; }
+.tag-opencv     { background: #1a3d2e; color: #4ecb8d; border-color: #2a5e46; }
+.tag-mediapipe  { background: #2e1a3d; color: #b57cf5; border-color: #4a2a5e; }
+
 /* ── Skills ── */
 .skills-grid {
   display: flex;
