@@ -92,13 +92,11 @@ nav {
 /* ── Theme Toggle ── */
 .theme-toggle {
   background: none;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 5px 10px;
+  border: none;
+  padding: 4px;
   cursor: pointer;
-  font-size: 14px;
-  color: var(--text-secondary);
-  transition: border-color 0.15s;
+  display: flex;
+  align-items: center;
 }
 
 .theme-toggle:hover {
