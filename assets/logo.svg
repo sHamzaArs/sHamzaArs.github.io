@@ -1,0 +1,7 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <path d="
+    M50,70  V130  H68  V109  H86  V130  H104  V70  L140,130  H122  L104,101  V70  H86  V91  H68  V70  Z
+    M104,88 L113,101 H95 Z
+  " 
+  fill="#1B5B82" />
+</svg>
